@@ -2,16 +2,16 @@ fun main () {
 
     var userInput:Int = 0
     var output = "null"
+    var counter = 0
 
-    do {
+    do  {
         println("Welcome to Cook's Cafe.")
         println("1. Coffee")
         println("2. Tea")
         println("3. Orange Juice")
         println("4. Water")
         println("5. Hot Cocoa")
-        println("6. Order complete")
-
+        println("6. Exit.  No purchase")
 
         println ("Choose one of the above:__")
         userInput = readLine()!!.toInt()
@@ -22,14 +22,18 @@ fun main () {
             3 -> output = "OJ $1.50"
             4 -> output = "Water $1.00"
             5 -> output = "Hot Cocoa $.50"
-            !in 1..6 -> "oops, try again"
+            6 -> output = "No purchase.  Come again"
+            !in 1..6 -> output = "Invalid selection. Please try again."
         }
 
-        println ("You choose $output")
+        if (userInput in 1..6) {
+            counter++
+        }
 
-    } while (userInput != 6)
+        println("You have selected:")
+        println ("$output")
 
-
+    } while (counter<1)
 
 
     print ("Thank You!")
